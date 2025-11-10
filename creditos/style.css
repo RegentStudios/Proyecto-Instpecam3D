@@ -1,0 +1,578 @@
+/* --- Variables de Color y Estilos Generales --- */
+:root {
+    --primary-color: #212529; /* Gris muy oscuro */
+    --secondary-color: #4CAF50; /* Verde principal */
+    --accent-color: #8BC34A; /* Verde claro de acento */
+    --light-color: #f8f9fa; /* Blanco/gris claro */
+    --dark-color: #343a40; /* Gris oscuro para tarjetas */
+    --text-color: #e9ecef; /* Color de texto principal */
+
+    /* Nuevos colores para rangos */
+    --rank-gold: #FFD700;
+    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
+    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
+    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
+    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    overflow-x: hidden; /* Previene el scroll horizontal */
+}
+
+/* --- Pantalla de Introducción --- */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    pointer-events: none; /* Permite hacer scroll "a través" de la imagen */
+    display: flex; /* Para centrar el título */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+/* Overlay oscuro para mejorar contraste del texto */
+.intro-screen::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.intro-screen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Título principal en la portada */
+.intro-title {
+    position: relative;
+    z-index: 2; /* Encima del overlay */
+}
+
+.intro-title h1 {
+    font-family: 'Orbitron', sans-serif; /* Nueva fuente futurista */
+    color: var(--light-color);
+    font-size: 6.5rem; /* Ligeramente más grande */
+    font-weight: 700; /* Peso de la fuente importada */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    /* Nuevo efecto 3D con extrusión y brillo */
+    text-shadow: 
+        /* Extrusión 3D */
+        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
+        /* Sombra proyectada para dar más profundidad */
+        5px 5px 10px rgba(0,0,0,0.6),
+        /* Brillo (estado inicial de la animación) */
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px var(--secondary-color),
+        0 0 40px var(--secondary-color),
+        0 0 70px var(--secondary-color);
+    margin: 0;
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: 
+        fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
+        pulseGlow 4s infinite alternate 2s; /* Animación de pulso para el brillo */
+}
+
+/* --- Indicador de desplazamiento (flecha) --- */
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Contenedor y estilo único del indicador (flecha) */
+.scroll-indicator {
+    position: fixed;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: min(40vw, 220px);
+    height: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.scroll-arrow {
+    width: 100%;
+    height: 20px;
+    color: var(--light-color);
+    opacity: 0;
+    transform-origin: center;
+}
+
+.scroll-arrow path {
+    stroke-width: 3.2;
+    vector-effect: non-scaling-stroke;
+}
+
+/* Animaciones específicas para cada flecha */
+.arrow-1 {
+    animation: arrowFade 2s infinite;
+}
+
+.arrow-2 {
+    animation: arrowFade 2s infinite 0.3s;
+}
+
+.arrow-3 {
+    animation: arrowFade 2s infinite 0.6s;
+}
+
+.scroll-indicator.active {
+    opacity: 1;
+}
+
+.scroll-indicator.active .scroll-arrow {
+    animation-play-state: running;
+}
+
+@media (max-width: 480px) {
+    .scroll-indicator {
+        bottom: 28px;
+        width: min(64vw, 160px);
+    }
+    .scroll-arrow {
+        height: 18px;
+    }
+}
+
+/* Nueva animación para el efecto de desvanecimiento */
+@keyframes arrowFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+/* Ajustes para móviles: reducir tamaño y separación */
+@media (max-width: 480px) {
+    .scroll-arrow {
+        width: min(64vw, 240px);
+        height: 22px;
+        animation-duration: 1.4s;
+    }
+    .scroll-indicator { bottom: 28px; }
+}
+
+/* --- Contenido Principal --- */
+main {
+    position: relative;
+    z-index: 1;
+    background-color: var(--primary-color);
+    padding-top: 100vh; /* Empuja el contenido para que empiece después de la intro */
+}
+
+/* --- Encabezado --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(33, 37, 41, 0.85); /* Gris oscuro semi-transparente */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--secondary-color);
+    position: sticky; /* Encabezado fijo al hacer scroll */
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    box-sizing: border-box; /* incluir padding en el ancho para evitar overflow */
+}
+
+.header .logo img {
+    height: 60px;
+    width: 60px; /* Asegura un círculo perfecto */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 50%; /* Hace la imagen redonda */
+    border: 2px solid var(--secondary-color);
+    /* Efecto de brillo */
+    box-shadow: 0 0 10px var(--secondary-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header .logo img:hover {
+    transform: scale(1.1); /* Agranda la imagen al pasar el mouse */
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Icono específico: quitar círculo de fondo y borde para que quede "en el aire".
+   Si la imagen tiene un fondo blanco incrustado, hay que reemplazarla por una PNG/SVG transparente.
+*/
+.header .logo img.icono {
+    width: auto;            /* Mantiene proporción natural */
+    height: 60px;          /* Tamaño consistente con otras imágenes */
+    border-radius: 0;      /* Quitar el radio circular */
+    border: none;          /* Quitar borde */
+    box-shadow: none;      /* Quitar sombra de borde */
+    background: transparent;/* Asegura que no haya color de fondo */
+    object-fit: contain;   /* Escala manteniendo proporción */
+    filter: drop-shadow(0 10px 12px rgba(0,0,0,0.45)); /* Sombra para efecto "flotante" */
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.header .logo img.icono:hover {
+    transform: translateY(-3px) scale(1.02);
+    filter: drop-shadow(0 14px 18px rgba(0,0,0,0.5));
+}
+
+.header-text h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Efecto 3D reducido para el encabezado */
+    text-shadow: 
+        1px 1px 0 #2E7D32,
+        2px 2px 4px rgba(0,0,0,0.5),
+        0 0 8px var(--secondary-color);
+}
+
+/* --- Botón Principal --- */
+.btn-main {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--light-color);
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6), inset 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+.btn-main:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color), 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- Contenedor General --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- Sección del Equipo --- */
+.team-section {
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.project-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.project-description strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* --- Grid de Tarjetas del Equipo --- */
+.team-grid {
+    display: grid;
+    /* Crea columnas automáticas que se ajustan al tamaño */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: transparent;
+    height: 400px;
+    perspective: 1000px; /* Activa el efecto 3D */
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    /* Nuevo borde verde y efecto 3D para todas las tarjetas */
+    border: 2px solid var(--secondary-color);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5), /* Sombra más profunda para efecto 3D */
+        inset 0 0 10px rgba(76, 175, 80, 0.4); /* Brillo interno verde */
+}
+
+/* Gira la tarjeta cuando se hace clic (añade/quita la clase .is-flipped) */
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Gira la tarjeta con hover en escritorio, solo si no está 'bloqueada' por un clic */
+@media (hover: hover) and (pointer: fine) {
+    .card:not(:has(.card-inner.is-flipped)):hover .card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Para Safari */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-front {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.card-front img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.card-front h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.card-back {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    transform: rotateY(180deg); /* Oculta la parte trasera por defecto */
+    padding: 30px;
+}
+
+.card-back h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.card-back p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.card-back p strong {
+    color: var(--accent-color);
+}
+
+/* --- Estilos de Rango para Tarjetas --- */
+
+/* Rango: Líder (Jefe de Proyecto) - Dorado */
+.rank-lead .card-front img {
+    border-color: var(--rank-gold);
+    /* Añade un brillo para destacarlo */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+.rank-lead .card-back h3 {
+    color: var(--rank-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* Rango: Sub-líder - Azul Brillante */
+.rank-sublead .card-front img {
+    border-color: var(--rank-blue-bright);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+}
+
+.rank-sublead .card-back h3 {
+    color: var(--rank-blue-bright);
+    text-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
+}
+
+/* Rango: Sub-líder Programación - Púrpura Brillante */
+.rank-sublead-purple .card-front img {
+    border-color: var(--rank-purple-bright);
+    box-shadow: 0 0 15px rgba(191, 85, 236, 0.7);
+}
+
+.rank-sublead-purple .card-back h3 {
+    color: var(--rank-purple-bright);
+    text-shadow: 0 0 8px rgba(191, 85, 236, 0.6);
+}
+
+/* Rango: Equipo de Diseño - Azul Normal */
+.rank-team-blue .card-front img {
+    border-color: var(--rank-blue-normal);
+}
+
+.rank-team-blue .card-back h3 {
+    color: var(--rank-blue-normal);
+}
+
+/* Rango: Equipo de Programación/Assets - Púrpura */
+.rank-team-purple .card-front img {
+    border-color: var(--rank-purple);
+}
+
+.rank-team-purple .card-back h3 {
+    color: var(--rank-purple);
+}
+
+
+/* --- Pie de Página --- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    border-top: 2px solid var(--secondary-color);
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+/* --- Ajustes para Móviles (Responsivo) --- */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+
+    .header-text h1 {
+        font-size: 2rem;
+        margin: 15px 0;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /* Sombra más simple para móvil */
+        text-shadow: 
+            1px 1px 3px rgba(0,0,0,0.5),
+            0 0 5px var(--secondary-color);
+    }
+
+    .btn-main {
+        margin-top: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .header .logo img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .intro-title h1 {
+        font-size: 3.5rem; /* Ajustado para la nueva fuente */
+        letter-spacing: 2px;
+        /* Efecto 3D simplificado para móviles */
+        text-shadow: 
+            1px 1px 0 #2E7D32,
+            2px 2px 0 #2E7D32,
+            3px 3px 6px rgba(0,0,0,0.6),
+            0 0 8px var(--secondary-color);
+        /* Quitar pulso en móvil para mejor rendimiento y menos distracción */
+        animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+}
+
+/* --- Animaciones --- */
+@keyframes fadeInTitle {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        text-shadow: 
+            /* Parte estática 3D */
+            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
+            /* Parte animada (brillo verde) */
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px var(--secondary-color),
+            0 0 40px var(--secondary-color),
+            0 0 70px var(--secondary-color);
+    }
+    to {
+        text-shadow: 
+            /* Parte estática 3D */
+            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
+            /* Parte animada (brillo verde claro) */
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px var(--accent-color),
+            0 0 40px var(--accent-color),
+            0 0 70px var(--accent-color);
+    }
+}
