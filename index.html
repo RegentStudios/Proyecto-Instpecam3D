@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créditos | INSTPECAM 3D</title>
-    <link rel="stylesheet" href="style.css"> <!-- Corregido aquí -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -15,17 +14,13 @@
         <div class="intro-title">
             <h1>INSTPECAM 3D</h1>
         </div>
-        <!-- Indicador de desplazamiento: tres flechas apiladas que sugieren deslizar hacia abajo -->
         <div class="scroll-indicator" aria-hidden="false">
-            <!-- Flecha superior -->
             <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
                 <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
-            <!-- Flecha media -->
             <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
                 <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
-            <!-- Flecha inferior -->
             <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
                 <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
@@ -35,19 +30,27 @@
     
     <main>
         <header class="header">
-            <div class="logo">
-                <a href="https://instpecam.edu.co/" target="_blank" rel="noopener noreferrer">
+            <div class="header-buttons">
+                <!-- Botón INSTPECAM -->
+                <a href="https://instpecam.edu.co/" target="_blank" rel="noopener noreferrer" class="header-btn">
                     <img src="escudoinstpecam.png" alt="Escudo del Instpecam">
                 </a>
-            </div>
-            <div class="header-text">
-                <h1>INSTPECAM 3D</h1>
-            </div>
 
-            <div class="logo">
-                <a href="https://regentstudios.github.io/RegentStudios/" target="_blank" rel="noopener noreferrer" class="btn-circular" aria-label="Ir a la página de Regent Studios">
-                    <img src="Icono.png" class="icono" alt="Icono de Regent Studios">
-                </a>
+                <div class="header-text">
+                    <h1>INSTPECAM 3D</h1>
+                </div>
+
+                <!-- Botones derecha -->
+                <div class="right-buttons">
+                    <!-- Botón Regent Studios -->
+                    <a class="header-btn regent-btn" aria-label="Ir a la página de Regent Studios">
+                        <img src="Icono.png" alt="Icono de Regent Studios">
+                    </a>
+                    <!-- Botón GitHub -->
+                    <a href="https://regentstudios.github.io/RegentStudios" target="_blank" rel="noopener noreferrer" class="header-btn github-btn" aria-label="Ver el proyecto en GitHub">
+                        <img src="LogoS.jpg" alt="Logo de GitHub">
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -57,7 +60,6 @@
                 <p class="project-description">Este proyecto de grado es la creación de un simulador 3D inmersivo del Instituto Técnico Industrial "Pedro Castro Monsalvo". Utilizando herramientas como <strong>Blender, Sketchup y Unity</strong>, nuestro objetivo es construir una réplica digital fiel y detallada del colegio. La intención es ofrecer una herramienta de exploración virtual para nuevos estudiantes y la comunidad, permitiendo un recorrido interactivo por sus instalaciones y preservando la memoria arquitectónica de la institución en un formato moderno y accesible.</p>
 
                 <div class="team-grid">
-                    <!-- Fila 1 -->
                     <div class="card rank-lead">
                         <div class="card-inner">
                             <div class="card-front">
@@ -114,7 +116,6 @@
                         </div>
                     </div>
 
-                    <!-- Fila 2 -->
                     <div class="card rank-team-blue">
                         <div class="card-inner">
                             <div class="card-front">
@@ -262,5 +263,4 @@
         })();
     </script>
 </body>
-
 </html>

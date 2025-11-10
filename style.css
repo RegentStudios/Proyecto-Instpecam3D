@@ -207,56 +207,96 @@ main {
 
 /* --- Encabezado --- */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: rgba(33, 37, 41, 0.85); /* Gris oscuro semi-transparente */
+    background-color: rgba(33, 37, 41, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--secondary-color);
-    position: sticky; /* Encabezado fijo al hacer scroll */
+    position: sticky;
     top: 0;
     z-index: 50;
     width: 100%;
-    box-sizing: border-box; /* incluir padding en el ancho para evitar overflow */
+    box-sizing: border-box;
 }
 
-.header .logo img {
+.header-buttons {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botones del header */
+.header-btn {
+    width: 60px;
     height: 60px;
-    width: 60px; /* Asegura un círculo perfecto */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
-    border-radius: 50%; /* Hace la imagen redonda */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Estilos específicos para cada botón */
+/* Botón INSTPECAM */
+.header-btn:first-child {
     border: 2px solid var(--secondary-color);
-    /* Efecto de brillo */
-    box-shadow: 0 0 10px var(--secondary-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(33, 37, 41, 0.5);
+    box-shadow: 0 0 10px var(--secondary-color);
 }
 
-.header .logo img:hover {
-    transform: scale(1.1); /* Agranda la imagen al pasar el mouse */
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--accent-color), inset 0 0 8px rgba(255, 255, 255, 0.7);
+.header-btn:first-child:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent-color);
+    border-color: var(--accent-color);
 }
 
-/* Icono específico: quitar círculo de fondo y borde para que quede "en el aire".
-   Si la imagen tiene un fondo blanco incrustado, hay que reemplazarla por una PNG/SVG transparente.
-*/
-.header .logo img.icono {
-    width: auto;            /* Mantiene proporción natural */
-    height: 60px;          /* Tamaño consistente con otras imágenes */
-    border-radius: 0;      /* Quitar el radio circular */
-    border: none;          /* Quitar borde */
-    box-shadow: none;      /* Quitar sombra de borde */
-    background: transparent;/* Asegura que no haya color de fondo */
-    object-fit: contain;   /* Escala manteniendo proporción */
-    filter: drop-shadow(0 10px 12px rgba(0,0,0,0.45)); /* Sombra para efecto "flotante" */
-    transition: transform 0.25s ease, filter 0.25s ease;
+/* Botón Regent Studios */
+.regent-btn {
+    background: transparent;
 }
 
-.header .logo img.icono:hover {
-    transform: translateY(-3px) scale(1.02);
+.regent-btn img {
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 12px rgba(0,0,0,0.45));
+}
+
+.regent-btn:hover img {
+    transform: translateY(-3px) scale(1.05);
     filter: drop-shadow(0 14px 18px rgba(0,0,0,0.5));
 }
+
+/* Botón GitHub */
+.github-btn {
+    border: 2px solid var(--secondary-color);
+    background-color: rgba(33, 37, 41, 0.85);
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+.github-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Contenedor de botones derecha */
+.right-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
 
 .header-text h1 {
     font-family: 'Orbitron', sans-serif;
