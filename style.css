@@ -1,23 +1,21 @@
-/* --- Variables de Color y Estilos Generales (Mantenido) --- */
+/* --- Variables de Color y Estilos Generales --- */
 :root {
-    --primary-color: #212529; /* Gris muy oscuro */
-    --secondary-color: #4CAF50; /* Verde principal */
-    --accent-color: #8BC34A; /* Verde claro de acento */
-    --light-color: #f8f9fa; /* Blanco/gris claro */
-    --dark-color: #343a40; /* Gris oscuro para tarjetas */
-    --text-color: #e9ecef; /* Color de texto principal */
+    --primary-color: #212529;
+    --secondary-color: #4CAF50;
+    --accent-color: #8BC34A;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --text-color: #e9ecef;
 
-    /* Nuevos colores para rangos */
+    /* Rangos */
     --rank-gold: #FFD700;
-    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
-    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
-    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
-    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
+    --rank-blue-bright: #29B6F6;
+    --rank-blue-normal: #1565C0;
+    --rank-purple: #9370DB;
+    --rank-purple-bright: #BF55EC;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -25,16 +23,14 @@ body {
     padding: 0;
     background-color: var(--primary-color);
     color: var(--text-color);
-    overflow-x: hidden; /* Previene el scroll horizontal */
+    overflow-x: hidden;
 }
 
-/* --- Pantalla de Introducción (Mantenido y funcional) --- */
+/* --- Pantalla de Introducción --- */
 .intro-screen {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
     z-index: 100;
     pointer-events: none;
     display: flex;
@@ -43,7 +39,6 @@ body {
     text-align: center;
     overflow: hidden;
 }
-
 .intro-screen::after {
     content: '';
     position: absolute;
@@ -51,21 +46,13 @@ body {
     background: rgba(0,0,0,0.4);
     z-index: 1;
 }
-
 .intro-screen img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
 }
-
-.intro-title {
-    position: relative;
-    z-index: 2;
-}
-
+.intro-title { position: relative; z-index: 2; }
 .intro-title h1 {
     font-family: 'Orbitron', sans-serif;
     color: var(--light-color);
@@ -74,102 +61,50 @@ body {
     text-transform: uppercase;
     letter-spacing: 5px;
     text-shadow: 
-        /* Extrusión 3D */
         1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
-        /* Sombra proyectada para dar más profundidad */
         5px 5px 10px rgba(0,0,0,0.6),
-        /* Brillo (estado inicial de la animación) */
-        0 0 5px #fff,
-        0 0 10px #fff,
+        0 0 5px #fff, 0 0 10px #fff,
         0 0 20px var(--secondary-color),
         0 0 40px var(--secondary-color),
         0 0 70px var(--secondary-color);
     margin: 0;
-    /* Animación de entrada */
     opacity: 0;
     transform: translateY(30px);
-    animation: 
-        fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
-        pulseGlow 4s infinite alternate 2s;
+    animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
+               pulseGlow 4s infinite alternate 2s;
 }
 
-/* --- Indicador de desplazamiento (flecha) (Mantenido y funcional) --- */
-.sr-only {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
+/* --- Indicador de scroll --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; }
 .scroll-indicator {
     position: fixed;
-    bottom: 36px;
-    left: 50%;
+    bottom: 36px; left: 50%;
     transform: translateX(-50%);
     z-index: 30;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
     gap: 4px;
     width: min(40vw, 220px);
-    height: auto;
     pointer-events: none;
     opacity: 0;
     transition: opacity 300ms ease;
 }
-
-.scroll-arrow {
-    width: 100%;
-    height: 20px;
-    color: var(--light-color);
-    opacity: 0;
-    transform-origin: center;
-}
-
-.scroll-arrow path {
-    stroke-width: 3.2;
-    vector-effect: non-scaling-stroke;
-}
-
+.scroll-arrow { width: 100%; height: 20px; color: var(--light-color); opacity: 0; }
+.scroll-arrow path { stroke-width: 3.2; }
 .arrow-1 { animation: arrowFade 2s infinite; }
 .arrow-2 { animation: arrowFade 2s infinite 0.3s; }
 .arrow-3 { animation: arrowFade 2s infinite 0.6s; }
-
 .scroll-indicator.active { opacity: 1; }
-.scroll-indicator.active .scroll-arrow { animation-play-state: running; }
 
-/* Animación para el efecto de desvanecimiento */
-@keyframes arrowFade {
-    0% { opacity: 0; transform: translateY(-8px); }
-    50% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(8px); }
-}
+/* --- Contenido Principal --- */
+main { position: relative; z-index: 1; background-color: var(--primary-color); padding-top: 100vh; }
 
-/* --- Contenido Principal (Mantenido) --- */
-main {
-    position: relative;
-    z-index: 1;
-    background-color: var(--primary-color);
-    padding-top: 100vh;
-}
-
-/* --- Encabezado (Corregido) --- */
+/* --- Header --- */
 .header {
     background-color: rgba(33, 37, 41, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--secondary-color);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    box-sizing: border-box;
+    position: sticky; top: 0; z-index: 50; width: 100%;
 }
-
 .header-buttons {
     max-width: 1200px;
     margin: 0 auto;
@@ -177,17 +112,9 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* **Ajuste:** Usar 'gap' para mejor espaciado entre elementos */
     gap: 10px;
 }
-
-.header-text {
-    /* **Ajuste:** Permitir que el texto ocupe el espacio flexible sin desbordarse */
-    flex-grow: 1;
-    min-width: 0; /* Necesario para que `overflow: hidden` funcione correctamente en flex */
-    text-align: center; /* Centrar el título dentro de su contenedor */
-}
-
+.header-text { flex-grow: 1; min-width: 0; text-align: center; }
 .header-text h1 {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
@@ -196,356 +123,175 @@ main {
     color: var(--light-color);
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 
-        1px 1px 0 #2E7D32,
-        2px 2px 4px rgba(0,0,0,0.5),
-        0 0 8px var(--secondary-color);
-    /* **Corrección Clave para móvil:** Oculta el exceso de texto */
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-shadow: 1px 1px 0 #2E7D32, 2px 2px 4px rgba(0,0,0,0.5), 0 0 8px var(--secondary-color);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-
-/* Botones del header */
 .header-btn {
-    width: 45px;
-    height: 45px;
+    width: 45px; height: 45px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0; /* Impide que los botones se encojan */
+    flex-shrink: 0;
 }
+.header-btn img { width: 100%; height: 100%; object-fit: cover; }
+.regent-btn img { height: 45px; width: auto; object-fit: contain; }
+.right-buttons { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-.header-btn img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+/* --- Contenedor --- */
+.container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
 
-/* Botón Regent Studios */
-.regent-btn img {
-    height: 45px;
-    width: auto;
-    object-fit: contain;
-}
+/* --- Sección Equipo --- */
+.team-section { text-align: center; }
+.section-title { font-size: 2.8rem; color: var(--accent-color); margin-bottom: 20px; }
+.project-description { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 50px auto; }
 
-/* Contenedor de botones derecha */
-.right-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-shrink: 0; /* Mantiene los botones a la derecha fijos */
-}
-
-/* --- Contenedor General (Mantenido) --- */
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* --- Sección del Equipo y Descripción (Mantenido) --- */
-.team-section {
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.8rem;
-    color: var(--accent-color);
-    margin-bottom: 20px;
-}
-
-.project-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto 50px auto;
-}
-
-/* --- Grid de Tarjetas del Equipo (Ajustado) --- */
+/* --- Grid de Tarjetas --- */
 .team-grid {
     display: grid;
-    /* MÓVIL/DEFAULT: 1 columna, mínimo 280px */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    /* **Ajuste:** Forzar el centrado del grid si hay menos elementos que el ancho máximo */
     justify-content: center;
 }
-
-.card {
-    background-color: transparent;
-    height: 420px;
-    perspective: 1000px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-/* ... resto de estilos de tarjeta mantenidos ... */
-
+.card { background-color: transparent; height: 420px; perspective: 1000px; border-radius: 15px; cursor: pointer; }
 .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: relative; width: 100%; height: 100%;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
     border-radius: 15px;
     border: 2px solid var(--secondary-color);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.5),
-        inset 0 0 10px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
 }
-
-.card-inner.is-flipped {
-    transform: rotateY(180deg);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .card:not(:has(.card-inner.is-flipped)):hover .card-inner {
-        transform: rotateY(180deg);
-    }
-}
-
+.card-inner.is-flipped { transform: rotateY(180deg); }
 .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
+    position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; box-sizing: border-box;
 }
-
-.card-front {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-}
-
+.card-front { background-color: var(--dark-color); color: var(--light-color); }
 .card-front img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 150px; height: 150px;
+    border-radius: 50%; object-fit: cover;
     border: 4px solid var(--secondary-color);
     margin-bottom: 20px;
 }
+.card-back { background-color: var(--dark-color); color: var(--light-color); transform: rotateY(180deg); padding: 30px; font-size: 0.95rem; }
+.card-back h3 { margin-top: 0; color: var(--secondary-color); }
+.card-back p { font-size: 1rem; line-height: 1.5; }
+.card-back p strong { color: var(--accent-color); }
 
-.card-front h3 {
-    margin: 0;
-    font-size: 1.4rem;
-}
+/* --- Rangos --- */
+.rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255,215,0,0.7); }
+.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255,215,0,0.8); } /* Corregido error de sintaxis aquí */
 
-.card-back {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    transform: rotateY(180deg);
-    padding: 30px;
-    /* Asegura que el texto pequeño se vea bien en móvil */
-    font-size: 0.95rem; 
-}
+.rank-sublead .card-inner { border: 2px solid var(--rank-blue-bright); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(41,182,246,0.5); }
+.rank-sublead .card-front img { border-color: var(--rank-blue-bright); box-shadow: 0 0 20px rgba(41,182,246,0.7); }
+.rank-sublead .card-back h3 { color: var(--rank-blue-bright); text-shadow: 0 0 10px rgba(41,182,246,0.8); }
 
-.card-back h3 {
-    margin-top: 0;
-    color: var(--secondary-color);
-}
+.rank-sublead-purple .card-inner { border: 2px solid var(--rank-purple-bright); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(191,85,236,0.5); }
+.rank-sublead-purple .card-front img { border-color: var(--rank-purple-bright); box-shadow: 0 0 20px rgba(191,85,236,0.7); }
+.rank-sublead-purple .card-back h3 { color: var(--rank-purple-bright); text-shadow: 0 0 10px rgba(191,85,236,0.8); }
 
-.card-back p {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.card-back p strong {
-    color: var(--accent-color);
-}
-
-/* --- Estilos de Rango (Mantenido) --- */
-
-.rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
-.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
-
-.rank-sublead .card-front img { border-color: var(--rank-blue-bright); box-shadow: 0 0 15px rgba(0, 191, 255, 0.7); }
-.rank-sublead .card-back h3 { color: var(--rank-blue-bright); text-shadow: 0 0 8px rgba(0, 191, 255, 0.6); }
-
-.rank-sublead-purple .card-front img { border-color: var(--rank-purple-bright); box-shadow: 0 0 15px rgba(191, 85, 236, 0.7); }
-.rank-sublead-purple .card-back h3 { color: var(--rank-purple-bright); text-shadow: 0 0 8px rgba(191, 85, 236, 0.6); }
-
+.rank-team-blue .card-inner { border: 2px solid var(--rank-blue-normal); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(21,101,192,0.5); }
 .rank-team-blue .card-front img { border-color: var(--rank-blue-normal); }
 .rank-team-blue .card-back h3 { color: var(--rank-blue-normal); }
 
+.rank-team-purple .card-inner { border: 2px solid var(--rank-purple); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(147,112,219,0.5); }
 .rank-team-purple .card-front img { border-color: var(--rank-purple); }
 .rank-team-purple .card-back h3 { color: var(--rank-purple); }
 
-/* --- Pie de Página (Mantenido) --- */
-.footer {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-    border-top: 2px solid var(--secondary-color);
+/* --- Animaciones --- */
+@keyframes fadeInTitle {
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+    0% { text-shadow: 5px 5px 10px rgba(0,0,0,0.6), 0 0 10px var(--secondary-color), 0 0 30px var(--secondary-color); }
+    100% { text-shadow: 5px 5px 10px rgba(0,0,0,0.8), 0 0 5px var(--secondary-color), 0 0 25px var(--secondary-color); }
+}
+@keyframes arrowFade {
+    0% { transform: translateY(-5px); opacity: 0; }
+    30% { transform: translateY(0); opacity: 1; }
+    70% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(5px); opacity: 0; }
 }
 
-.footer-content p {
-    margin: 5px 0;
-}
+/* ---------------------------------------------------------------------- */
+/* --- MEDIA QUERIES (OPTIMIZACIÓN MÓVIL) --- */
+/* ---------------------------------------------------------------------- */
 
-/* --- Ajustes Específicos para Móviles (Max 600px) --- */
-@media (max-width: 600px) {
-    
-    /* 1. Header: Ajuste para que los botones y el título quepan en una línea */
-    .header-buttons {
-        padding: 10px 10px; /* Reducción de padding para más espacio */
-        gap: 8px;
-    }
-    
+/* Ajustes para tabletas y móviles (Máximo 768px de ancho) */
+@media (max-width: 768px) {
+    /* Header */
     .header-text h1 {
-        font-size: 1.25rem; /* Título más pequeño y legible */
-        letter-spacing: 0.5px;
-        text-shadow: 
-            1px 1px 0 #2E7D32,
-            0 0 5px var(--secondary-color);
-    }
-    
-    .header-btn {
-        width: 32px; /* Botones más pequeños */
-        height: 32px;
-    }
-    
-    .regent-btn img {
-        height: 32px;
-    }
-
-    /* 2. Intro Title: Reducción drástica para móvil */
-    .intro-title h1 {
-        font-size: 2.2rem;
+        font-size: 1.5rem; /* Reducir el título principal */
         letter-spacing: 1px;
-        /* Simplificar el efecto 3D para rendimiento */
-        text-shadow: 
-            1px 1px 0 #2E7D32,
-            2px 2px 4px rgba(0,0,0,0.5),
-            0 0 8px var(--secondary-color);
-        animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    
-    /* 3. Contenido y Grid */
-    .container {
-        padding: 0 15px;
-        margin: 20px auto;
+    .header-btn {
+        width: 35px; /* Botones más pequeños */
+        height: 35px;
+    }
+    .regent-btn img {
+        height: 35px; /* Ajustar icono de Regent Studios */
     }
 
-    .section-title {
-        font-size: 2rem;
+    /* Título de Introducción */
+    .intro-title h1 {
+        font-size: 3rem; /* Tamaño más apropiado para móviles */
+        letter-spacing: 2px;
+        /* Reducir la intensidad del text-shadow para evitar artefactos */
+        text-shadow: 
+            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 
+            3px 3px 6px rgba(0,0,0,0.6),
+            0 0 3px #fff,
+            0 0 10px var(--secondary-color);
     }
-    
+}
+
+/* Ajustes para móviles pequeños (Máximo 600px de ancho) */
+@media (max-width: 600px) {
+    /* Contenido General */
+    .container {
+        margin: 20px auto; /* Reducir márgenes verticales */
+        padding: 0 15px;
+    }
+    .section-title {
+        font-size: 2rem; /* Título de sección más pequeño */
+        margin-bottom: 15px;
+    }
     .project-description {
-        font-size: 1rem;
+        font-size: 1rem; /* Descripción más compacta */
         margin-bottom: 30px;
     }
-    
-    /* El team-grid ya se ajusta a 1 columna por defecto */
-    .card {
-        height: 380px;
+
+    /* Grid de Tarjetas (Lo más importante) */
+    .team-grid {
+        /* Fuerza una sola columna en pantallas muy estrechas */
+        grid-template-columns: 1fr;
     }
-    
+    .card {
+        height: 380px; /* Altura más compacta para que quepan más en pantalla */
+    }
     .card-front img {
-        width: 120px;
+        width: 120px; /* Foto más pequeña */
         height: 120px;
         margin-bottom: 15px;
     }
-    
     .card-front h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Nombre más pequeño */
     }
-    
-    .card-back p {
+    .card-back {
+        padding: 20px; /* Reducir el padding de la parte de atrás */
         font-size: 0.9rem;
     }
+    .card-back p { 
+        font-size: 0.95rem; 
+    }
 
-    /* Indicador de scroll */
+    /* Scroll Indicator */
     .scroll-indicator {
-        bottom: 25px;
-    }
-    
-    /* **Corrección de la tarjeta líder en móvil:** Evita que se desborde al forzar su max-width */
-    .rank-lead {
-        /* Ignorar el span 2 en móvil */
-        grid-column: span 1 !important; 
-        /* Eliminar estilos de centrado de escritorio */
-        margin-left: initial !important; 
-        margin-right: initial !important; 
-        max-width: initial !important;
-    }
-}
-
-
-/* --- Tabletas / Pantallas medianas (Ajuste para 2 columnas en grid) --- */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .team-grid {
-        /* Fuerza 2 columnas en tabletas */
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .header-text h1 {
-        font-size: 2rem;
-    }
-    /* **Ajuste:** Asegura que la tarjeta líder ocupe 2 columnas si es la configuración de tableta */
-    .rank-lead {
-        grid-column: span 2;
-    }
-}
-
-
-/* --- Escritorio (A partir de 1025px) --- */
-@media (min-width: 1025px) {
-    /* Optimización de 4 columnas en desktop */
-    .team-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    /* La tarjeta líder toma 2 columnas en la primera fila */
-    .rank-lead {
-        grid-column: span 2;
-        /* Para centrar la tarjeta grande */
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 500px;
-    }
-}
-
-
-/* --- Animaciones (Mantenidas) --- */
-@keyframes fadeInTitle {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    from {
-        text-shadow: 
-            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--secondary-color),
-            0 0 40px var(--secondary-color),
-            0 0 70px var(--secondary-color);
-    }
-    to {
-        text-shadow: 
-            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--accent-color),
-            0 0 40px var(--accent-color),
-            0 0 70px var(--accent-color);
+        width: min(60vw, 180px); /* Ajustar el ancho */
+        bottom: 20px; 
     }
 }
