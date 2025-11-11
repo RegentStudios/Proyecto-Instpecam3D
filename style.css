@@ -1,18 +1,18 @@
 /* --- Variables de Color y Estilos Generales --- */
 :root {
-    --primary-color: #212529;
-    --secondary-color: #4CAF50;
-    --accent-color: #8BC34A;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --text-color: #e9ecef;
+    --primary-color: #212529; /* Gris muy oscuro */
+    --secondary-color: #4CAF50; /* Verde principal */
+    --accent-color: #8BC34A; /* Verde claro de acento */
+    --light-color: #f8f9fa; /* Blanco/gris claro */
+    --dark-color: #343a40; /* Gris oscuro para tarjetas */
+    --text-color: #e9ecef; /* Color de texto principal */
 
-    /* Rangos */
+    /* Nuevos colores para rangos */
     --rank-gold: #FFD700;
-    --rank-blue-bright: #29B6F6;
-    --rank-blue-normal: #1565C0;
-    --rank-purple: #9370DB;
-    --rank-purple-bright: #BF55EC;
+    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
+    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
+    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
+    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
 }
 
 html { scroll-behavior: smooth; }
@@ -33,11 +33,8 @@ body {
     width: 100%; height: 100vh;
     z-index: 100;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
 }
 .intro-screen::after {
     content: '';
@@ -75,25 +72,60 @@ body {
 }
 
 /* --- Indicador de scroll --- */
-.sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; }
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .scroll-indicator {
     position: fixed;
-    bottom: 36px; left: 50%;
+    bottom: 36px;
+    left: 50%;
     transform: translateX(-50%);
-    z-index: 30;
-    display: flex; flex-direction: column; align-items: center;
+    z-index: 101; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 4px;
     width: min(40vw, 220px);
+    height: auto;
     pointer-events: none;
-    opacity: 0;
+    opacity: 0; /* INICIA OCULTO */
     transition: opacity 300ms ease;
 }
-.scroll-arrow { width: 100%; height: 20px; color: var(--light-color); opacity: 0; }
-.scroll-arrow path { stroke-width: 3.2; }
+
+.scroll-arrow {
+    width: 100%;
+    height: 20px;
+    color: var(--accent-color); /* Color Cian */
+    opacity: 0;
+    transform-origin: center;
+    filter: drop-shadow(0 0 8px var(--secondary-color)); /* Efecto Neo */
+}
+
+.scroll-arrow path {
+    stroke-width: 3.2;
+    vector-effect: non-scaling-stroke;
+}
+
 .arrow-1 { animation: arrowFade 2s infinite; }
 .arrow-2 { animation: arrowFade 2s infinite 0.3s; }
 .arrow-3 { animation: arrowFade 2s infinite 0.6s; }
+
 .scroll-indicator.active { opacity: 1; }
+
+@keyframes arrowFade {
+    0% { opacity: 0; transform: translateY(-8px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+}
 
 /* --- Contenido Principal --- */
 main { position: relative; z-index: 1; background-color: var(--primary-color); padding-top: 100vh; }
@@ -131,11 +163,27 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     transition: all 0.3s ease;
-    flex-shrink: 0;
+    flex-shrink: 0; 
 }
-.header-btn img { width: 100%; height: 100%; object-fit: cover; }
-.regent-btn img { height: 45px; width: auto; object-fit: contain; }
-.right-buttons { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.header-btn img { 
+    width: 100%; height: 100%; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(76,175,80,0.5);
+    transition: all 0.3s ease;
+}
+.header-btn:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.right-buttons { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    flex-shrink: 0; 
+}
 
 /* --- Contenedor --- */
 .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
@@ -144,6 +192,7 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 .team-section { text-align: center; }
 .section-title { font-size: 2.8rem; color: var(--accent-color); margin-bottom: 20px; }
 .project-description { font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 50px auto; }
+.project-description strong { color: var(--accent-color); font-weight: 600; }
 
 /* --- Grid de Tarjetas --- */
 .team-grid {
@@ -152,7 +201,14 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
     gap: 30px;
     justify-content: center;
 }
-.card { background-color: transparent; height: 420px; perspective: 1000px; border-radius: 15px; cursor: pointer; }
+.card { background-color: transparent; height: 420px; perspective: 1000px; cursor: pointer; border-radius: 15px; }
+
+/* REGLA DE GIRO: Depende de la clase 'is-flipped' (manejada por JS) */
+.card-inner.is-flipped { 
+    transform: rotateY(180deg); 
+}
+/* FIN REGLA DE GIRO */
+
 .card-inner {
     position: relative; width: 100%; height: 100%;
     text-align: center;
@@ -162,7 +218,7 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
     border: 2px solid var(--secondary-color);
     box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
 }
-.card-inner.is-flipped { transform: rotateY(180deg); }
+
 .card-front, .card-back {
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden;
@@ -173,7 +229,8 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 .card-front { background-color: var(--dark-color); color: var(--light-color); }
 .card-front img {
     width: 150px; height: 150px;
-    border-radius: 50%; object-fit: cover;
+    border-radius: 50%; 
+    object-fit: cover;
     border: 4px solid var(--secondary-color);
     margin-bottom: 20px;
 }
@@ -182,9 +239,10 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 .card-back p { font-size: 1rem; line-height: 1.5; }
 .card-back p strong { color: var(--accent-color); }
 
-/* --- Rangos --- */
+/* --- Estilos de Rango (Manteniendo tus colores) --- */
+.rank-lead .card-inner { border: 2px solid var(--rank-gold); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,215,0,0.5); }
 .rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255,215,0,0.7); }
-.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255,215,0,0.8); } /* Corregido error de sintaxis aquí */
+.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255,215,0,0.8); }
 
 .rank-sublead .card-inner { border: 2px solid var(--rank-blue-bright); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(41,182,246,0.5); }
 .rank-sublead .card-front img { border-color: var(--rank-blue-bright); box-shadow: 0 0 20px rgba(41,182,246,0.7); }
@@ -217,81 +275,79 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
     100% { transform: translateY(5px); opacity: 0; }
 }
 
+
+/* ---------------------------------------------------------------------- */
+/* --- Footer (Pie de Página) Simple y Centrado --- */
+/* ---------------------------------------------------------------------- */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    padding: 20px 20px; 
+    border-top: 2px solid var(--secondary-color);
+    margin-top: 40px;
+    text-align: center; 
+}
+.footer-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7); 
+}
+
+
 /* ---------------------------------------------------------------------- */
 /* --- MEDIA QUERIES (OPTIMIZACIÓN MÓVIL) --- */
 /* ---------------------------------------------------------------------- */
 
 /* Ajustes para tabletas y móviles (Máximo 768px de ancho) */
 @media (max-width: 768px) {
-    /* Header */
+    /* Header: Compacto */
+    .header-buttons {
+        padding: 8px 15px; 
+        gap: 8px;
+    }
     .header-text h1 {
-        font-size: 1.5rem; /* Reducir el título principal */
+        font-size: 1.4rem; 
         letter-spacing: 1px;
     }
     .header-btn {
-        width: 35px; /* Botones más pequeños */
-        height: 35px;
-    }
-    .regent-btn img {
-        height: 35px; /* Ajustar icono de Regent Studios */
+        width: 38px; 
+        height: 38px;
     }
 
     /* Título de Introducción */
     .intro-title h1 {
-        font-size: 3rem; /* Tamaño más apropiado para móviles */
-        letter-spacing: 2px;
-        /* Reducir la intensidad del text-shadow para evitar artefactos */
-        text-shadow: 
-            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 
-            3px 3px 6px rgba(0,0,0,0.6),
-            0 0 3px #fff,
-            0 0 10px var(--secondary-color);
+        font-size: 3rem; 
     }
-}
 
-/* Ajustes para móviles pequeños (Máximo 600px de ancho) */
-@media (max-width: 600px) {
-    /* Contenido General */
+    /* Contenedor General */
     .container {
-        margin: 20px auto; /* Reducir márgenes verticales */
+        margin: 20px auto; 
         padding: 0 15px;
     }
     .section-title {
-        font-size: 2rem; /* Título de sección más pequeño */
-        margin-bottom: 15px;
-    }
-    .project-description {
-        font-size: 1rem; /* Descripción más compacta */
-        margin-bottom: 30px;
+        font-size: 2.2rem; 
     }
 
-    /* Grid de Tarjetas (Lo más importante) */
+    /* Grid de Tarjetas: Una sola columna */
     .team-grid {
-        /* Fuerza una sola columna en pantallas muy estrechas */
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
+        gap: 20px;
     }
     .card {
-        height: 380px; /* Altura más compacta para que quepan más en pantalla */
+        height: 380px; 
     }
     .card-front img {
-        width: 120px; /* Foto más pequeña */
+        width: 120px; 
         height: 120px;
-        margin-bottom: 15px;
+        border-width: 4px;
     }
-    .card-front h3 {
-        font-size: 1.3rem; /* Nombre más pequeño */
+    
+    /* Footer en Móviles: Asegurar que es pequeño */
+    .footer {
+        padding: 15px 10px;
     }
-    .card-back {
-        padding: 20px; /* Reducir el padding de la parte de atrás */
-        font-size: 0.9rem;
-    }
-    .card-back p { 
-        font-size: 0.95rem; 
-    }
-
-    /* Scroll Indicator */
-    .scroll-indicator {
-        width: min(60vw, 180px); /* Ajustar el ancho */
-        bottom: 20px; 
+    .footer-content p {
+        font-size: 0.8rem;
     }
 }
