@@ -158,7 +158,7 @@ main {
     padding-top: 100vh;
 }
 
-/* --- Encabezado (Ajustado para Móviles) --- */
+/* --- Encabezado (Corregido) --- */
 .header {
     background-color: rgba(33, 37, 41, 0.85);
     backdrop-filter: blur(10px);
@@ -173,16 +173,25 @@ main {
 .header-buttons {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 20px; /* Reducir padding para móvil */
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* **Ajuste:** Usar 'gap' para mejor espaciado entre elementos */
+    gap: 10px;
+}
+
+.header-text {
+    /* **Ajuste:** Permitir que el texto ocupe el espacio flexible sin desbordarse */
+    flex-grow: 1;
+    min-width: 0; /* Necesario para que `overflow: hidden` funcione correctamente en flex */
+    text-align: center; /* Centrar el título dentro de su contenedor */
 }
 
 .header-text h1 {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
-    font-size: 2.5rem; /* Ajuste por defecto */
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--light-color);
     text-transform: uppercase;
@@ -191,7 +200,7 @@ main {
         1px 1px 0 #2E7D32,
         2px 2px 4px rgba(0,0,0,0.5),
         0 0 8px var(--secondary-color);
-    /* **ADICIÓN:** Asegura que el texto no se rompa */
+    /* **Corrección Clave para móvil:** Oculta el exceso de texto */
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -199,7 +208,7 @@ main {
 
 /* Botones del header */
 .header-btn {
-    width: 45px; /* Reducción de tamaño para que quepan */
+    width: 45px;
     height: 45px;
     border-radius: 50%;
     display: flex;
@@ -220,7 +229,7 @@ main {
 
 /* Botón Regent Studios */
 .regent-btn img {
-    height: 45px; /* Ajustar el icono de Regent al nuevo tamaño del botón */
+    height: 45px;
     width: auto;
     object-fit: contain;
 }
@@ -228,8 +237,9 @@ main {
 /* Contenedor de botones derecha */
 .right-buttons {
     display: flex;
-    gap: 10px; /* Reducir separación para móvil */
+    gap: 10px;
     align-items: center;
+    flex-shrink: 0; /* Mantiene los botones a la derecha fijos */
 }
 
 /* --- Contenedor General (Mantenido) --- */
@@ -257,17 +267,19 @@ main {
     margin: 0 auto 50px auto;
 }
 
-/* --- Grid de Tarjetas del Equipo (Ajustado para Móviles) --- */
+/* --- Grid de Tarjetas del Equipo (Ajustado) --- */
 .team-grid {
     display: grid;
-    /* MÓVIL/DEFAULT: 1 columna, mínimo 260px (auto-fit se ajusta a 1) */
+    /* MÓVIL/DEFAULT: 1 columna, mínimo 280px */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    /* **Ajuste:** Forzar el centrado del grid si hay menos elementos que el ancho máximo */
+    justify-content: center;
 }
 
 .card {
     background-color: transparent;
-    height: 420px; /* Ligeramente más alto para mejor visualización de texto en móvil */
+    height: 420px;
     perspective: 1000px;
     border-radius: 15px;
     cursor: pointer;
@@ -356,7 +368,6 @@ main {
 }
 
 /* --- Estilos de Rango (Mantenido) --- */
-/* ... (Se mantienen todos los estilos de rango, ya que están bien definidos) ... */
 
 .rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
 .rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
@@ -392,26 +403,30 @@ main {
     
     /* 1. Header: Ajuste para que los botones y el título quepan en una línea */
     .header-buttons {
-        padding: 10px 15px; /* Más estrecho */
+        padding: 10px 10px; /* Reducción de padding para más espacio */
+        gap: 8px;
     }
-
+    
     .header-text h1 {
-        font-size: 1.5rem; /* Título más pequeño y legible */
-        letter-spacing: 1px;
+        font-size: 1.25rem; /* Título más pequeño y legible */
+        letter-spacing: 0.5px;
+        text-shadow: 
+            1px 1px 0 #2E7D32,
+            0 0 5px var(--secondary-color);
     }
     
     .header-btn {
-        width: 35px; /* Botones más pequeños */
-        height: 35px;
+        width: 32px; /* Botones más pequeños */
+        height: 32px;
     }
     
     .regent-btn img {
-        height: 35px;
+        height: 32px;
     }
 
     /* 2. Intro Title: Reducción drástica para móvil */
     .intro-title h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         letter-spacing: 1px;
         /* Simplificar el efecto 3D para rendimiento */
         text-shadow: 
@@ -436,9 +451,9 @@ main {
         margin-bottom: 30px;
     }
     
-    /* El team-grid ya se ajusta a 1 columna por defecto gracias a minmax(280px, 1fr) */
+    /* El team-grid ya se ajusta a 1 columna por defecto */
     .card {
-        height: 380px; /* Ajuste para mantener proporción */
+        height: 380px;
     }
     
     .card-front img {
@@ -459,6 +474,16 @@ main {
     .scroll-indicator {
         bottom: 25px;
     }
+    
+    /* **Corrección de la tarjeta líder en móvil:** Evita que se desborde al forzar su max-width */
+    .rank-lead {
+        /* Ignorar el span 2 en móvil */
+        grid-column: span 1 !important; 
+        /* Eliminar estilos de centrado de escritorio */
+        margin-left: initial !important; 
+        margin-right: initial !important; 
+        max-width: initial !important;
+    }
 }
 
 
@@ -470,6 +495,10 @@ main {
     }
     .header-text h1 {
         font-size: 2rem;
+    }
+    /* **Ajuste:** Asegura que la tarjeta líder ocupe 2 columnas si es la configuración de tableta */
+    .rank-lead {
+        grid-column: span 2;
     }
 }
 
