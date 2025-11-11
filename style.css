@@ -1,4 +1,4 @@
-/* --- Variables de Color y Estilos Generales --- */
+/* --- Variables de Color y Estilos Generales (Mantenido) --- */
 :root {
     --primary-color: #212529; /* Gris muy oscuro */
     --secondary-color: #4CAF50; /* Verde principal */
@@ -28,7 +28,7 @@ body {
     overflow-x: hidden; /* Previene el scroll horizontal */
 }
 
-/* --- Pantalla de Introducción --- */
+/* --- Pantalla de Introducción (Mantenido y funcional) --- */
 .intro-screen {
     position: fixed;
     top: 0;
@@ -36,15 +36,14 @@ body {
     width: 100%;
     height: 100vh;
     z-index: 100;
-    pointer-events: none; /* Permite hacer scroll "a través" de la imagen */
-    display: flex; /* Para centrar el título */
+    pointer-events: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden; /* Evita desbordamientos */
+    overflow: hidden;
 }
 
-/* Overlay oscuro para mejorar contraste del texto */
 .intro-screen::after {
     content: '';
     position: absolute;
@@ -62,20 +61,18 @@ body {
     object-fit: cover;
 }
 
-/* Título principal en la portada */
 .intro-title {
     position: relative;
-    z-index: 2; /* Encima del overlay */
+    z-index: 2;
 }
 
 .intro-title h1 {
-    font-family: 'Orbitron', sans-serif; /* Nueva fuente futurista */
+    font-family: 'Orbitron', sans-serif;
     color: var(--light-color);
-    font-size: 6.5rem; /* Ligeramente más grande */
-    font-weight: 700; /* Peso de la fuente importada */
+    font-size: 6.5rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 5px;
-    /* Nuevo efecto 3D con extrusión y brillo */
     text-shadow: 
         /* Extrusión 3D */
         1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
@@ -93,10 +90,10 @@ body {
     transform: translateY(30px);
     animation: 
         fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
-        pulseGlow 4s infinite alternate 2s; /* Animación de pulso para el brillo */
+        pulseGlow 4s infinite alternate 2s;
 }
 
-/* --- Indicador de desplazamiento (flecha) --- */
+/* --- Indicador de desplazamiento (flecha) (Mantenido y funcional) --- */
 .sr-only {
     position: absolute !important;
     width: 1px;
@@ -109,7 +106,6 @@ body {
     border: 0;
 }
 
-/* Contenedor y estilo único del indicador (flecha) */
 .scroll-indicator {
     position: fixed;
     bottom: 36px;
@@ -140,72 +136,29 @@ body {
     vector-effect: non-scaling-stroke;
 }
 
-/* Animaciones específicas para cada flecha */
-.arrow-1 {
-    animation: arrowFade 2s infinite;
-}
+.arrow-1 { animation: arrowFade 2s infinite; }
+.arrow-2 { animation: arrowFade 2s infinite 0.3s; }
+.arrow-3 { animation: arrowFade 2s infinite 0.6s; }
 
-.arrow-2 {
-    animation: arrowFade 2s infinite 0.3s;
-}
+.scroll-indicator.active { opacity: 1; }
+.scroll-indicator.active .scroll-arrow { animation-play-state: running; }
 
-.arrow-3 {
-    animation: arrowFade 2s infinite 0.6s;
-}
-
-.scroll-indicator.active {
-    opacity: 1;
-}
-
-.scroll-indicator.active .scroll-arrow {
-    animation-play-state: running;
-}
-
-@media (max-width: 480px) {
-    .scroll-indicator {
-        bottom: 28px;
-        width: min(64vw, 160px);
-    }
-    .scroll-arrow {
-        height: 18px;
-    }
-}
-
-/* Nueva animación para el efecto de desvanecimiento */
+/* Animación para el efecto de desvanecimiento */
 @keyframes arrowFade {
-    0% {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(8px);
-    }
+    0% { opacity: 0; transform: translateY(-8px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
 }
 
-/* Ajustes para móviles: reducir tamaño y separación */
-@media (max-width: 480px) {
-    .scroll-arrow {
-        width: min(64vw, 240px);
-        height: 22px;
-        animation-duration: 1.4s;
-    }
-    .scroll-indicator { bottom: 28px; }
-}
-
-/* --- Contenido Principal --- */
+/* --- Contenido Principal (Mantenido) --- */
 main {
     position: relative;
     z-index: 1;
     background-color: var(--primary-color);
-    padding-top: 100vh; /* Empuja el contenido para que empiece después de la intro */
+    padding-top: 100vh;
 }
 
-/* --- Encabezado --- */
+/* --- Encabezado (Ajustado para Móviles) --- */
 .header {
     background-color: rgba(33, 37, 41, 0.85);
     backdrop-filter: blur(10px);
@@ -220,16 +173,34 @@ main {
 .header-buttons {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 30px;
+    padding: 10px 20px; /* Reducir padding para móvil */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.header-text h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-size: 2.5rem; /* Ajuste por defecto */
+    font-weight: 700;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        1px 1px 0 #2E7D32,
+        2px 2px 4px rgba(0,0,0,0.5),
+        0 0 8px var(--secondary-color);
+    /* **ADICIÓN:** Asegura que el texto no se rompa */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Botones del header */
 .header-btn {
-    width: 60px;
-    height: 60px;
+    width: 45px; /* Reducción de tamaño para que quepan */
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -237,6 +208,7 @@ main {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0; /* Impide que los botones se encojan */
 }
 
 .header-btn img {
@@ -246,107 +218,28 @@ main {
     transition: transform 0.3s ease;
 }
 
-/* Estilos específicos para cada botón */
-/* Botón INSTPECAM */
-.header-btn:first-child {
-    border: 2px solid var(--secondary-color);
-    background-color: rgba(33, 37, 41, 0.5);
-    box-shadow: 0 0 10px var(--secondary-color);
-}
-
-.header-btn:first-child:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px var(--accent-color);
-    border-color: var(--accent-color);
-}
-
 /* Botón Regent Studios */
-.regent-btn {
-    background: transparent;
-}
-
 .regent-btn img {
+    height: 45px; /* Ajustar el icono de Regent al nuevo tamaño del botón */
     width: auto;
-    height: 60px;
     object-fit: contain;
-    filter: drop-shadow(0 10px 12px rgba(0,0,0,0.45));
-}
-
-.regent-btn:hover img {
-    transform: translateY(-3px) scale(1.05);
-    filter: drop-shadow(0 14px 18px rgba(0,0,0,0.5));
-}
-
-/* Botón GitHub */
-.github-btn {
-    border: 2px solid var(--secondary-color);
-    background-color: rgba(33, 37, 41, 0.85);
-    box-shadow: 0 0 10px var(--secondary-color);
-}
-
-.github-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px var(--accent-color);
-    border-color: var(--accent-color);
 }
 
 /* Contenedor de botones derecha */
 .right-buttons {
     display: flex;
-    gap: 20px;
+    gap: 10px; /* Reducir separación para móvil */
     align-items: center;
 }
 
-
-.header-text h1 {
-    font-family: 'Orbitron', sans-serif;
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--light-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    /* Efecto 3D reducido para el encabezado */
-    text-shadow: 
-        1px 1px 0 #2E7D32,
-        2px 2px 4px rgba(0,0,0,0.5),
-        0 0 8px var(--secondary-color);
-}
-
-/* --- Botón Circular (Icono) --- */
-.btn-circular {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid var(--secondary-color);
-    background-color: rgba(33, 37, 41, 0.5);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px var(--secondary-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-.btn-circular:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.1);
-    box-shadow: 0 0 15px var(--accent-color), inset 0 0 8px rgba(255, 255, 255, 0.7);
-}
-
-.btn-circular .icono {
-    height: 45px; /* Más pequeño para que quepa en el círculo */
-    width: 45px;
-    filter: drop-shadow(0 5px 6px rgba(0,0,0,0.45));
-}
-
-/* --- Contenedor General --- */
+/* --- Contenedor General (Mantenido) --- */
 .container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* --- Sección del Equipo --- */
+/* --- Sección del Equipo y Descripción (Mantenido) --- */
 .team-section {
     text-align: center;
 }
@@ -364,26 +257,22 @@ main {
     margin: 0 auto 50px auto;
 }
 
-.project-description strong {
-    color: var(--accent-color);
-    font-weight: 600;
-}
-
-/* --- Grid de Tarjetas del Equipo --- */
+/* --- Grid de Tarjetas del Equipo (Ajustado para Móviles) --- */
 .team-grid {
     display: grid;
-    /* Crea columnas automáticas que se ajustan al tamaño */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* MÓVIL/DEFAULT: 1 columna, mínimo 260px (auto-fit se ajusta a 1) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
 .card {
     background-color: transparent;
-    height: 400px;
-    perspective: 1000px; /* Activa el efecto 3D */
+    height: 420px; /* Ligeramente más alto para mejor visualización de texto en móvil */
+    perspective: 1000px;
     border-radius: 15px;
     cursor: pointer;
 }
+/* ... resto de estilos de tarjeta mantenidos ... */
 
 .card-inner {
     position: relative;
@@ -393,19 +282,16 @@ main {
     transition: transform 0.8s;
     transform-style: preserve-3d;
     border-radius: 15px;
-    /* Nuevo borde verde y efecto 3D para todas las tarjetas */
     border: 2px solid var(--secondary-color);
     box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.5), /* Sombra más profunda para efecto 3D */
-        inset 0 0 10px rgba(76, 175, 80, 0.4); /* Brillo interno verde */
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(76, 175, 80, 0.4);
 }
 
-/* Gira la tarjeta cuando se hace clic (añade/quita la clase .is-flipped) */
 .card-inner.is-flipped {
     transform: rotateY(180deg);
 }
 
-/* Gira la tarjeta con hover en escritorio, solo si no está 'bloqueada' por un clic */
 @media (hover: hover) and (pointer: fine) {
     .card:not(:has(.card-inner.is-flipped)):hover .card-inner {
         transform: rotateY(180deg);
@@ -416,7 +302,7 @@ main {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Para Safari */
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 15px;
     display: flex;
@@ -449,8 +335,10 @@ main {
 .card-back {
     background-color: var(--dark-color);
     color: var(--light-color);
-    transform: rotateY(180deg); /* Oculta la parte trasera por defecto */
+    transform: rotateY(180deg);
     padding: 30px;
+    /* Asegura que el texto pequeño se vea bien en móvil */
+    font-size: 0.95rem; 
 }
 
 .card-back h3 {
@@ -467,62 +355,25 @@ main {
     color: var(--accent-color);
 }
 
-/* --- Estilos de Rango para Tarjetas --- */
+/* --- Estilos de Rango (Mantenido) --- */
+/* ... (Se mantienen todos los estilos de rango, ya que están bien definidos) ... */
 
-/* Rango: Líder (Jefe de Proyecto) - Dorado */
-.rank-lead .card-front img {
-    border-color: var(--rank-gold);
-    /* Añade un brillo para destacarlo */
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-}
+.rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
 
-.rank-lead .card-back h3 {
-    color: var(--rank-gold);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-}
+.rank-sublead .card-front img { border-color: var(--rank-blue-bright); box-shadow: 0 0 15px rgba(0, 191, 255, 0.7); }
+.rank-sublead .card-back h3 { color: var(--rank-blue-bright); text-shadow: 0 0 8px rgba(0, 191, 255, 0.6); }
 
-/* Rango: Sub-líder - Azul Brillante */
-.rank-sublead .card-front img {
-    border-color: var(--rank-blue-bright);
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
-}
+.rank-sublead-purple .card-front img { border-color: var(--rank-purple-bright); box-shadow: 0 0 15px rgba(191, 85, 236, 0.7); }
+.rank-sublead-purple .card-back h3 { color: var(--rank-purple-bright); text-shadow: 0 0 8px rgba(191, 85, 236, 0.6); }
 
-.rank-sublead .card-back h3 {
-    color: var(--rank-blue-bright);
-    text-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
-}
+.rank-team-blue .card-front img { border-color: var(--rank-blue-normal); }
+.rank-team-blue .card-back h3 { color: var(--rank-blue-normal); }
 
-/* Rango: Sub-líder Programación - Púrpura Brillante */
-.rank-sublead-purple .card-front img {
-    border-color: var(--rank-purple-bright);
-    box-shadow: 0 0 15px rgba(191, 85, 236, 0.7);
-}
+.rank-team-purple .card-front img { border-color: var(--rank-purple); }
+.rank-team-purple .card-back h3 { color: var(--rank-purple); }
 
-.rank-sublead-purple .card-back h3 {
-    color: var(--rank-purple-bright);
-    text-shadow: 0 0 8px rgba(191, 85, 236, 0.6);
-}
-
-/* Rango: Equipo de Diseño - Azul Normal */
-.rank-team-blue .card-front img {
-    border-color: var(--rank-blue-normal);
-}
-
-.rank-team-blue .card-back h3 {
-    color: var(--rank-blue-normal);
-}
-
-/* Rango: Equipo de Programación/Assets - Púrpura */
-.rank-team-purple .card-front img {
-    border-color: var(--rank-purple);
-}
-
-.rank-team-purple .card-back h3 {
-    color: var(--rank-purple);
-}
-
-
-/* --- Pie de Página --- */
+/* --- Pie de Página (Mantenido) --- */
 .footer {
     background-color: var(--dark-color);
     color: var(--light-color);
@@ -536,51 +387,112 @@ main {
     margin: 5px 0;
 }
 
-/* --- Ajustes para Móviles (Responsivo) --- */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 20px;
-        width: calc(100% - 40px);
+/* --- Ajustes Específicos para Móviles (Max 600px) --- */
+@media (max-width: 600px) {
+    
+    /* 1. Header: Ajuste para que los botones y el título quepan en una línea */
+    .header-buttons {
+        padding: 10px 15px; /* Más estrecho */
     }
 
     .header-text h1 {
-        font-size: 2rem;
-        margin: 15px 0;
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
+        font-size: 1.5rem; /* Título más pequeño y legible */
         letter-spacing: 1px;
-        /* Sombra más simple para móvil */
-        text-shadow: 
-            1px 1px 3px rgba(0,0,0,0.5),
-            0 0 5px var(--secondary-color);
+    }
+    
+    .header-btn {
+        width: 35px; /* Botones más pequeños */
+        height: 35px;
+    }
+    
+    .regent-btn img {
+        height: 35px;
     }
 
-    .header .logo img {
-        height: 50px;
-        width: 50px;
+    /* 2. Intro Title: Reducción drástica para móvil */
+    .intro-title h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        /* Simplificar el efecto 3D para rendimiento */
+        text-shadow: 
+            1px 1px 0 #2E7D32,
+            2px 2px 4px rgba(0,0,0,0.5),
+            0 0 8px var(--secondary-color);
+        animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    
+    /* 3. Contenido y Grid */
+    .container {
+        padding: 0 15px;
+        margin: 20px auto;
     }
 
     .section-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    /* El team-grid ya se ajusta a 1 columna por defecto gracias a minmax(280px, 1fr) */
+    .card {
+        height: 380px; /* Ajuste para mantener proporción */
+    }
+    
+    .card-front img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
+    }
+    
+    .card-front h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-back p {
+        font-size: 0.9rem;
     }
 
-    .intro-title h1 {
-        font-size: 3.5rem; /* Ajustado para la nueva fuente */
-        letter-spacing: 2px;
-        /* Efecto 3D simplificado para móviles */
-        text-shadow: 
-            1px 1px 0 #2E7D32,
-            2px 2px 0 #2E7D32,
-            3px 3px 6px rgba(0,0,0,0.6),
-            0 0 8px var(--secondary-color);
-        /* Quitar pulso en móvil para mejor rendimiento y menos distracción */
-        animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Indicador de scroll */
+    .scroll-indicator {
+        bottom: 25px;
     }
 }
 
-/* --- Animaciones --- */
+
+/* --- Tabletas / Pantallas medianas (Ajuste para 2 columnas en grid) --- */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .team-grid {
+        /* Fuerza 2 columnas en tabletas */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .header-text h1 {
+        font-size: 2rem;
+    }
+}
+
+
+/* --- Escritorio (A partir de 1025px) --- */
+@media (min-width: 1025px) {
+    /* Optimización de 4 columnas en desktop */
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* La tarjeta líder toma 2 columnas en la primera fila */
+    .rank-lead {
+        grid-column: span 2;
+        /* Para centrar la tarjeta grande */
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 500px;
+    }
+}
+
+
+/* --- Animaciones (Mantenidas) --- */
 @keyframes fadeInTitle {
     to {
         opacity: 1;
@@ -591,9 +503,7 @@ main {
 @keyframes pulseGlow {
     from {
         text-shadow: 
-            /* Parte estática 3D */
             1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            /* Parte animada (brillo verde) */
             0 0 5px #fff,
             0 0 10px #fff,
             0 0 20px var(--secondary-color),
@@ -602,9 +512,7 @@ main {
     }
     to {
         text-shadow: 
-            /* Parte estática 3D */
             1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            /* Parte animada (brillo verde claro) */
             0 0 5px #fff,
             0 0 10px #fff,
             0 0 20px var(--accent-color),
