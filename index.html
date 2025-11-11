@@ -11,19 +11,19 @@
 </head>
 <body>
     <div class="intro-screen">
-        <img src="instpecamIMG1.jpg" alt="Foto del Instituto I.E.T.I. Pedro Castro Monsalvo">
+        <img src="instpecamimg1.jpg" alt="Foto del Instituto I.E.T.I. Pedro Castro Monsalvo">
         <div class="intro-title">
             <h1>INSTPECAM 3D</h1>
         </div>
-        <div class="scroll-indicator" aria-hidden="true">
-            <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 10l5 5 5-5"/>
+        <div class="scroll-indicator" aria-hidden="false">
+            <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
-            <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 10l5 5 5-5"/>
+            <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
-            <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 10l5 5 5-5"/>
+            <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
             </svg>
             <span class="sr-only">Desliza hacia abajo</span>
         </div>
@@ -32,7 +32,7 @@
     <main>
         <header class="header">
             <div class="header-buttons">
-                <a href="https://instpecam.edu.co/" target="_blank" rel="noopener noreferrer" class="header-btn instpecam-btn">
+                <a href="https://instpecam.edu.co/" target="_blank" rel="noopener noreferrer" class="header-btn instpecam-btn" aria-label="Sitio web de Instpecam">
                     <img src="escudoinstpecam.png" alt="Escudo del Instpecam">
                 </a>
 
@@ -41,18 +41,18 @@
                 </div>
 
                 <div class="right-buttons">
-                    <a class="header-btn regent-btn" aria-label="Ir a la página de Regent Studios">
-                        <img src="Icono.png" alt="Icono de Regent Studios">
+                    <a class="header-btn regent-btn" aria-label="Icono del Proyecto">
+                        <img src="Icono.png" alt="Icono del Proyecto">
                     </a>
                     <a href="https://regentstudios.github.io/RegentStudios" target="_blank" rel="noopener noreferrer" class="header-btn github-btn" aria-label="Ver el proyecto en GitHub">
-                        <img src="LogoS.jpg" alt="Logo de GitHub">
+                        <img src="LogoS.jpg" alt="Logo de Regent Studios">
                     </a>
                 </div>
             </div>
         </header>
 
         <div class="container">
-            <div class="team-section">
+            <div class="team-section" id="team">
                 <h2 class="section-title">Equipo de Desarrollo</h2>
                 <p class="project-description">Este proyecto de grado es la creación de un simulador 3D inmersivo del Instituto Técnico Industrial "Pedro Castro Monsalvo". Utilizando herramientas como <strong>Blender, Sketchup y Unity</strong>, nuestro objetivo es construir una réplica digital fiel y detallada del colegio. La intención es ofrecer una herramienta de exploración virtual para nuevos estudiantes y la comunidad, permitiendo un recorrido interactivo por sus instalaciones y preservando la memoria arquitectónica de la institución en un formato moderno y accesible.</p>
 
@@ -173,10 +173,9 @@
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer simple-footer">
         <div class="footer-content">
-            <p><strong>INSTPECAM 3D</strong> | Un proyecto de <strong>Regent Studios</strong></p>
-            <p>© 2025 Regent Studios</p>
+            <p>INSTPECAM 3D | &copy; 2025 Regent Studios.</p>
         </div>
     </footer>
 
@@ -198,27 +197,33 @@
             }
         });
 
-        // Script para girar las tarjetas al hacer clic
+        // SCRIPT RESTAURADO: Giro de las tarjetas al hacer clic/tap
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', () => {
                 card.querySelector('.card-inner').classList.toggle('is-flipped');
             });
+            // Añadir hover para desktop
+            card.addEventListener('mouseenter', () => {
+                 card.querySelector('.card-inner').classList.add('is-flipped');
+            });
+            card.addEventListener('mouseleave', () => {
+                 card.querySelector('.card-inner').classList.remove('is-flipped');
+            });
         });
-
-        // Activar indicador de scroll si el usuario permanece en la intro sin desplazarse
+        
+        // Script para activar el indicador de scroll
         (function() {
             const indicator = document.querySelector('.scroll-indicator');
             if (!indicator) return;
 
             let idleTimer = null;
-            const idleDelay = 2500; // ms: tiempo que debe permanecer en la intro para activar
+            const idleDelay = 2500; 
 
             const isInIntro = () => window.scrollY <= window.innerHeight * 0.15;
 
             function startIdle() {
                 clearTimeout(idleTimer);
                 idleTimer = setTimeout(() => {
-                    // Añadir clase active para mostrar y animar la flecha
                     indicator.classList.add('active');
                 }, idleDelay);
             }
@@ -228,10 +233,8 @@
                 indicator.classList.remove('active');
             }
 
-            // Reinicia el temporizador si estamos en la intro; si salimos, ocultar
             function handleScroll() {
                 if (isInIntro()) {
-                    // User still at the intro area -> start (or restart) idle timer
                     cancelIdle();
                     startIdle();
                 } else {
@@ -239,19 +242,16 @@
                 }
             }
 
-            // Al cargar la página, si ya está en la intro, iniciar el temporizador
             window.addEventListener('load', () => {
                 if (isInIntro()) startIdle();
             });
 
-            // Scroll y visibilidad afectan el estado
             window.addEventListener('scroll', handleScroll, { passive: true });
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState === 'visible' && isInIntro()) startIdle();
                 else cancelIdle();
             });
 
-            // Si el usuario hace cualquier interacción (tecla o click), ocultar
             ['keydown','pointerdown','touchstart'].forEach(ev => {
                 window.addEventListener(ev, () => {
                     cancelIdle();
