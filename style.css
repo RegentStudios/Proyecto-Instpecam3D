@@ -1,120 +1,118 @@
 /* --- Variables de Color y Estilos Generales --- */
 :root {
-    --primary-color: #212529; /* Gris muy oscuro */
-    --secondary-color: #4CAF50; /* Verde principal */
-    --accent-color: #8BC34A; /* Verde claro de acento */
-    --light-color: #f8f9fa; /* Blanco/gris claro */
-    --dark-color: #343a40; /* Gris oscuro para tarjetas */
-    --text-color: #e9ecef; /* Color de texto principal */
-    --download-color: #00B8D4; /* Cian brillante para descarga */
+    --primary-color: #212529; /* Gris muy oscuro */
+    --secondary-color: #4CAF50; /* Verde principal */
+    --accent-color: #8BC34A; /* Verde claro de acento */
+    --light-color: #f8f9fa; /* Blanco/gris claro */
+    --dark-color: #343a40; /* Gris oscuro para tarjetas */
+    --text-color: #e9ecef; /* Color de texto principal */
 
-    /* Nuevos colores para rangos */
-    --rank-gold: #FFD700;
-    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
-    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
-    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
-    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
+    /* Colores para rangos */
+    --rank-gold: #FFD700;
+    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
+    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
+    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
+    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    overflow-x: hidden;
 }
 
 /* --- Pantalla de Introducción --- */
 .intro-screen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    z-index: 100;
-    pointer-events: none;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; overflow: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 100;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
 }
 .intro-screen::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
 }
 .intro-screen img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
 }
 .intro-title { position: relative; z-index: 2; }
 .intro-title h1 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--light-color);
-    font-size: 6.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 
-        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
-        5px 5px 10px rgba(0,0,0,0.6),
-        0 0 5px #fff, 0 0 10px #fff,
-        0 0 20px var(--secondary-color),
-        0 0 40px var(--secondary-color),
-        0 0 70px var(--secondary-color);
-    margin: 0;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
-               pulseGlow 4s infinite alternate 2s;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--light-color);
+    font-size: 6.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 
+        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
+        5px 5px 10px rgba(0,0,0,0.6),
+        0 0 5px #fff, 0 0 10px #fff,
+        0 0 20px var(--secondary-color),
+        0 0 40px var(--secondary-color),
+        0 0 70px var(--secondary-color);
+    margin: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
+               pulseGlow 4s infinite alternate 2s;
 }
 
 /* --- Indicador de scroll --- */
 .sr-only {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .scroll-indicator {
-    position: fixed;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 101; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    /* Ancho aumentado para las barras */
-    width: min(50vw, 300px); 
-    height: auto;
-    pointer-events: none;
-    opacity: 0; /* INICIA OCULTO */
-    transition: opacity 300ms ease;
+    position: fixed;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: min(50vw, 300px); 
+    height: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
 }
 
 .scroll-arrow {
-    width: 100%;
-    height: 20px;
-    color: var(--accent-color); /* Color Cian */
-    opacity: 0;
-    transform-origin: center;
-    filter: drop-shadow(0 0 8px var(--secondary-color)); /* Efecto Neo */
+    width: 100%;
+    height: 20px;
+    color: var(--accent-color);
+    opacity: 0;
+    transform-origin: center;
+    filter: drop-shadow(0 0 8px var(--secondary-color));
 }
 
 .scroll-arrow path {
-    stroke-width: 3.2;
-    vector-effect: non-scaling-stroke;
+    stroke-width: 3.2;
+    vector-effect: non-scaling-stroke;
 }
 
 .arrow-1 { animation: arrowFade 2s infinite; }
@@ -124,9 +122,9 @@ body {
 .scroll-indicator.active { opacity: 1; }
 
 @keyframes arrowFade {
-    0% { opacity: 0; transform: translateY(-8px); }
-    50% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(8px); }
+    0% { opacity: 0; transform: translateY(-8px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
 }
 
 /* --- Contenido Principal --- */
@@ -134,87 +132,132 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Header --- */
 .header {
-    background-color: rgba(33, 37, 41, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--secondary-color);
-    position: sticky; top: 0; z-index: 50; width: 100%;
+    background-color: rgba(33, 37, 41, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--secondary-color);
+    position: sticky; top: 0; z-index: 50; width: 100%;
 }
 .header-buttons {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 .header-text { flex-grow: 1; min-width: 0; text-align: center; }
 .header-text h1 {
-    font-family: 'Orbitron', sans-serif;
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--light-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 0 #2E7D32, 2px 2px 4px rgba(0,0,0,0.5), 0 0 8px var(--secondary-color);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 #2E7D32, 2px 2px 4px rgba(0,0,0,0.5), 0 0 8px var(--secondary-color);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .header-btn {
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0; 
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; 
 }
 /* Estilo general para imágenes en botones (escudos/logos) */
-.header-btn img { 
-    width: 100%; height: 100%; 
-    object-fit: cover; 
-    border-radius: 50%; 
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 0 10px rgba(76,175,80,0.5);
-    transition: all 0.3s ease;
+.header-btn img { 
+    width: 100%; height: 100%; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(76,175,80,0.5);
+    transition: all 0.3s ease;
 }
-.header-btn:not(.download-btn):hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px var(--accent-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
+.header-btn:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-/* --- ESTILOS ESPECÍFICOS PARA EL BOTÓN DE DESCARGA --- */
-.download-btn {
-    /* Mismo contenedor circular que los demás */
-    background-color: transparent;
-    border: 2px solid var(--download-color); /* Borde cian brillante */
-    box-shadow: 0 0 10px rgba(0, 184, 212, 0.6); /* Brillo cian sutil */
-}
-.download-icon {
-    /* Estiliza el SVG dentro del botón */
-    width: 65%;
-    height: 65%;
-    color: var(--download-color);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-.download-btn:hover {
-    background-color: rgba(0, 184, 212, 0.1);
-    box-shadow: 0 0 15px var(--download-color), inset 0 0 8px rgba(255, 255, 255, 0.5);
-}
-.download-btn:hover .download-icon {
-    transform: translateY(2px); /* Pequeño movimiento hacia abajo al hacer hover */
-    color: var(--light-color);
-}
-/* FIN ESTILOS BOTÓN DE DESCARGA */
-
-
-.right-buttons { 
-    display: flex; 
-    gap: 10px; 
-    align-items: center; 
-    flex-shrink: 0; 
+.right-buttons { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    flex-shrink: 0; 
 }
 
 /* --- Contenedor --- */
 .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+
+/* ---------------------------------------------------------------------- */
+/* --- ESTILOS: CALL TO ACTION (CTA) CON BOTÓN DE DESCARGA RECTANGULAR --- */
+/* ---------------------------------------------------------------------- */
+
+.call-to-action {
+    text-align: center;
+    background-color: var(--dark-color);
+    padding: 30px 20px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 15px rgba(76,175,80,0.3);
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    color: var(--light-color);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.cta-text strong {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.cta-button {
+    /* Diseño rectangular, verde, bordes curvos y brillo */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-family: 'Orbitron', sans-serif; 
+}
+
+.cta-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--primary-color);
+}
+
+.cta-button:hover {
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    /* Efecto de brillo (Glow) */
+    box-shadow: 0 0 5px var(--accent-color), 
+                0 0 20px var(--accent-color), 
+                0 0 40px var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------- */
+/* --- FIN Estilos CTA --- */
+/* ---------------------------------------------------------------------- */
+
 
 /* --- Sección Equipo --- */
 .team-section { text-align: center; }
@@ -224,50 +267,50 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Grid de Tarjetas --- */
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
 }
 .card { background-color: transparent; height: 420px; perspective: 1000px; cursor: pointer; border-radius: 15px; }
 
 /* REGLA DE GIRO: Depende de la clase 'is-flipped' (manejada por JS) */
-.card-inner.is-flipped { 
-    transform: rotateY(180deg); 
+.card-inner.is-flipped { 
+    transform: rotateY(180deg); 
 }
 /* FIN REGLA DE GIRO */
 
 .card-inner {
-    position: relative; width: 100%; height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: 15px;
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
+    position: relative; width: 100%; height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
 }
 
 .card-front, .card-back {
-    position: absolute; width: 100%; height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 20px; box-sizing: border-box;
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; box-sizing: border-box;
 }
 .card-front { background-color: var(--dark-color); color: var(--light-color); }
 .card-front img {
-    width: 150px; height: 150px;
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 4px solid var(--secondary-color);
-    margin-bottom: 20px;
+    width: 150px; height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 4px solid var(--secondary-color);
+    margin-bottom: 20px;
 }
 .card-back { background-color: var(--dark-color); color: var(--light-color); transform: rotateY(180deg); padding: 30px; font-size: 0.95rem; }
 .card-back h3 { margin-top: 0; color: var(--secondary-color); }
 .card-back p { font-size: 1rem; line-height: 1.5; }
 .card-back p strong { color: var(--accent-color); }
 
-/* --- Estilos de Rango (Manteniendo tus colores) --- */
+/* --- Estilos de Rango --- */
 .rank-lead .card-inner { border: 2px solid var(--rank-gold); box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,215,0,0.5); }
 .rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255,215,0,0.7); }
 .rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255,215,0,0.8); }
@@ -290,36 +333,28 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Animaciones --- */
 @keyframes fadeInTitle {
-    to { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulseGlow {
-    0% { text-shadow: 5px 5px 10px rgba(0,0,0,0.6), 0 0 10px var(--secondary-color), 0 0 30px var(--secondary-color); }
-    100% { text-shadow: 5px 5px 10px rgba(0,0,0,0.8), 0 0 5px var(--secondary-color), 0 0 25px var(--secondary-color); }
-}
-@keyframes arrowFade {
-    0% { transform: translateY(-5px); opacity: 0; }
-    30% { transform: translateY(0); opacity: 1; }
-    70% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(5px); opacity: 0; }
+    0% { text-shadow: 5px 5px 10px rgba(0,0,0,0.6), 0 0 10px var(--secondary-color), 0 0 30px var(--secondary-color); }
+    100% { text-shadow: 5px 5px 10px rgba(0,0,0,0.8), 0 0 5px var(--secondary-color), 0 0 25px var(--secondary-color); }
 }
 
 
-/* ---------------------------------------------------------------------- */
 /* --- Footer (Pie de Página) Simple y Centrado --- */
-/* ---------------------------------------------------------------------- */
 .footer {
-    background-color: var(--dark-color);
-    color: var(--text-color);
-    padding: 20px 20px; 
-    border-top: 2px solid var(--secondary-color);
-    margin-top: 40px;
-    text-align: center; 
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    padding: 20px 20px; 
+    border-top: 2px solid var(--secondary-color);
+    margin-top: 40px;
+    text-align: center; 
 }
 .footer-content p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.7); 
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7); 
 }
 
 
@@ -329,64 +364,77 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* Ajustes para tabletas y móviles (Máximo 768px de ancho) */
 @media (max-width: 768px) {
-    /* Header: Compacto */
-    .header-buttons {
-        padding: 8px 15px; 
-        gap: 8px;
-    }
-    
-    /* TÍTULO DEL ENCABEZADO: REDUCIDO PARA MOSTRAR "INSTPECAM 3D" */
-    .header-text h1 {
-        font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
-        letter-spacing: 1px;
-    }
-    
-    .header-btn {
-        width: 38px; 
-        height: 38px;
-    }
-
-    /* Ajuste del grosor del borde en el botón de descarga para móvil */
-    .download-btn {
-        border-width: 1px;
+    /* Header: Compacto */
+    .header-buttons {
+        padding: 8px 15px; 
+        gap: 8px;
     }
-    .download-btn .download-icon {
-        stroke-width: 3;
+    
+    /* TÍTULO DEL ENCABEZADO */
+    .header-text h1 {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    
+    .header-btn {
+        width: 38px; 
+        height: 38px;
     }
 
-    /* TÍTULO DE INTRODUCCIÓN: REDUCIDO PARA MOSTRAR TEXTO COMPLETO */
-    .intro-title h1 {
-        font-size: 2.5rem; /* Reducido de 3rem a 2.5rem */
-    }
+    /* TÍTULO DE INTRODUCCIÓN */
+    .intro-title h1 {
+        font-size: 2.5rem;
+    }
 
-    /* Contenedor General */
-    .container {
-        margin: 20px auto; 
-        padding: 0 15px;
-    }
-    .section-title {
-        font-size: 2.2rem; 
-    }
+    /* Contenedor General */
+    .container {
+        margin: 20px auto; 
+        padding: 0 15px;
+    }
+    .section-title {
+        font-size: 2.2rem; 
+    }
 
-    /* Grid de Tarjetas: Una sola columna */
-    .team-grid {
-        grid-template-columns: 1fr; 
-        gap: 20px;
-    }
-    .card {
-        height: 380px; 
-    }
-    .card-front img {
-        width: 120px; 
-        height: 120px;
-        border-width: 4px;
-    }
-    
-    /* Footer en Móviles: Asegurar que es pequeño */
-    .footer {
-        padding: 15px 10px;
-    }
-    .footer-content p {
-        font-size: 0.8rem;
-    }
+    /* CTA para móvil */
+    .call-to-action {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+    
+    .cta-text {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .cta-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Grid de Tarjetas: Una sola columna */
+    .team-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    .card {
+        height: 380px; 
+    }
+    .card-front img {
+        width: 120px; 
+        height: 120px;
+        border-width: 4px;
+    }
+    
+    /* Footer en Móviles */
+    .footer {
+        padding: 15px 10px;
+    }
+    .footer-content p {
+        font-size: 0.8rem;
+    }
 }
