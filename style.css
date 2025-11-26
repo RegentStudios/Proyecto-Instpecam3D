@@ -1,119 +1,119 @@
 /* --- Variables de Color y Estilos Generales --- */
 :root {
-    --primary-color: #212529; /* Gris muy oscuro */
-    --secondary-color: #4CAF50; /* Verde principal */
-    --accent-color: #8BC34A; /* Verde claro de acento */
-    --light-color: #f8f9fa; /* Blanco/gris claro */
-    --dark-color: #343a40; /* Gris oscuro para tarjetas */
-    --text-color: #e9ecef; /* Color de texto principal */
+    --primary-color: #212529; /* Gris muy oscuro */
+    --secondary-color: #4CAF50; /* Verde principal */
+    --accent-color: #8BC34A; /* Verde claro de acento */
+    --light-color: #f8f9fa; /* Blanco/gris claro */
+    --dark-color: #343a40; /* Gris oscuro para tarjetas */
+    --text-color: #e9ecef; /* Color de texto principal */
 
-    /* Nuevos colores para rangos */
-    --rank-gold: #FFD700;
-    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
-    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
-    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
-    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
+    /* Nuevos colores para rangos */
+    --rank-gold: #FFD700;
+    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
+    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
+    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
+    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    overflow-x: hidden;
 }
 
 /* --- Pantalla de Introducción --- */
 .intro-screen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    z-index: 100;
-    pointer-events: none;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; overflow: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 100;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
 }
 .intro-screen::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
 }
 .intro-screen img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
 }
 .intro-title { position: relative; z-index: 2; }
 .intro-title h1 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--light-color);
-    font-size: 6.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 
-        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
-        5px 5px 10px rgba(0,0,0,0.6),
-        0 0 5px #fff, 0 0 10px #fff,
-        0 0 20px var(--secondary-color),
-        0 0 40px var(--secondary-color),
-        0 0 70px var(--secondary-color);
-    margin: 0;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
-               pulseGlow 4s infinite alternate 2s;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--light-color);
+    font-size: 6.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 
+        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
+        5px 5px 10px rgba(0,0,0,0.6),
+        0 0 5px #fff, 0 0 10px #fff,
+        0 0 20px var(--secondary-color),
+        0 0 40px var(--secondary-color),
+        0 0 70px var(--secondary-color);
+    margin: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
+               pulseGlow 4s infinite alternate 2s;
 }
 
 /* --- Indicador de scroll --- */
 .sr-only {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .scroll-indicator {
-    position: fixed;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 101; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    /* Ancho aumentado para las barras */
-    width: min(50vw, 300px); 
-    height: auto;
-    pointer-events: none;
-    opacity: 0; /* INICIA OCULTO */
-    transition: opacity 300ms ease;
+    position: fixed;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    /* Ancho aumentado para las barras */
+    width: min(50vw, 300px); 
+    height: auto;
+    pointer-events: none;
+    opacity: 0; /* INICIA OCULTO */
+    transition: opacity 300ms ease;
 }
 
 .scroll-arrow {
-    width: 100%;
-    height: 20px;
-    color: var(--accent-color); /* Color Cian */
-    opacity: 0;
-    transform-origin: center;
-    filter: drop-shadow(0 0 8px var(--secondary-color)); /* Efecto Neo */
+    width: 100%;
+    height: 20px;
+    color: var(--accent-color); /* Color Cian */
+    opacity: 0;
+    transform-origin: center;
+    filter: drop-shadow(0 0 8px var(--secondary-color)); /* Efecto Neo */
 }
 
 .scroll-arrow path {
-    stroke-width: 3.2;
-    vector-effect: non-scaling-stroke;
+    stroke-width: 3.2;
+    vector-effect: non-scaling-stroke;
 }
 
 .arrow-1 { animation: arrowFade 2s infinite; }
@@ -123,9 +123,9 @@ body {
 .scroll-indicator.active { opacity: 1; }
 
 @keyframes arrowFade {
-    0% { opacity: 0; transform: translateY(-8px); }
-    50% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(8px); }
+    0% { opacity: 0; transform: translateY(-8px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
 }
 
 /* --- Contenido Principal --- */
@@ -133,57 +133,83 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Header --- */
 .header {
-    background-color: rgba(33, 37, 41, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--secondary-color);
-    position: sticky; top: 0; z-index: 50; width: 100%;
+    background-color: rgba(33, 37, 41, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--secondary-color);
+    position: sticky; top: 0; z-index: 50; width: 100%;
 }
 .header-buttons {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 .header-text { flex-grow: 1; min-width: 0; text-align: center; }
 .header-text h1 {
-    font-family: 'Orbitron', sans-serif;
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--light-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 0 #2E7D32, 2px 2px 4px rgba(0,0,0,0.5), 0 0 8px var(--secondary-color);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0 #2E7D32, 2px 2px 4px rgba(0,0,0,0.5), 0 0 8px var(--secondary-color);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .header-btn {
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0; 
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; 
 }
-.header-btn img { 
-    width: 100%; height: 100%; 
-    object-fit: cover; 
-    border-radius: 50%; 
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 0 10px rgba(76,175,80,0.5);
-    transition: all 0.3s ease;
-}
-.header-btn:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px var(--accent-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
+.header-btn img { 
+    width: 100%; height: 100%; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 0 10px rgba(76,175,80,0.5);
+    transition: all 0.3s ease;
 }
 
-.right-buttons { 
-    display: flex; 
-    gap: 10px; 
-    align-items: center; 
-    flex-shrink: 0; 
+/* --- ESTILOS ESPECÍFICOS PARA EL BOTÓN DE DESCARGA --- */
+.download-btn {
+    /* Mantiene el borde circular pero estiliza el contenido */
+    background-color: transparent;
+    border: 2px solid var(--accent-color); /* Borde verde claro de acento */
+    box-shadow: 0 0 10px rgba(139,195,74,0.6); /* Brillo sutil */
+}
+.download-btn svg {
+    width: 70%; /* Icono más grande */
+    height: 70%;
+    color: var(--accent-color); /* Color del icono */
+    transition: transform 0.3s ease;
+}
+.download-btn:hover {
+    background-color: rgba(139,195,74,0.1); /* Fondo ligero al pasar el ratón */
+    border-color: var(--light-color);
+    box-shadow: 0 0 15px var(--light-color), inset 0 0 8px var(--accent-color); /* Brillo intenso al pasar el ratón */
+}
+.download-btn:hover svg {
+    transform: translateY(2px); /* Pequeño movimiento hacia abajo */
+    color: var(--light-color);
+}
+/* Asegura que los botones con imagen sigan funcionando */
+.header-btn:not(.download-btn):hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-color), inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+/* FIN ESTILOS BOTÓN DE DESCARGA */
+
+
+.right-buttons { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    flex-shrink: 0; 
 }
 
 /* --- Contenedor --- */
@@ -197,43 +223,43 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Grid de Tarjetas --- */
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
 }
 .card { background-color: transparent; height: 420px; perspective: 1000px; cursor: pointer; border-radius: 15px; }
 
 /* REGLA DE GIRO: Depende de la clase 'is-flipped' (manejada por JS) */
-.card-inner.is-flipped { 
-    transform: rotateY(180deg); 
+.card-inner.is-flipped { 
+    transform: rotateY(180deg); 
 }
 /* FIN REGLA DE GIRO */
 
 .card-inner {
-    position: relative; width: 100%; height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: 15px;
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
+    position: relative; width: 100%; height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 10px rgba(76,175,80,0.4);
 }
 
 .card-front, .card-back {
-    position: absolute; width: 100%; height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 20px; box-sizing: border-box;
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; box-sizing: border-box;
 }
 .card-front { background-color: var(--dark-color); color: var(--light-color); }
 .card-front img {
-    width: 150px; height: 150px;
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 4px solid var(--secondary-color);
-    margin-bottom: 20px;
+    width: 150px; height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 4px solid var(--secondary-color);
+    margin-bottom: 20px;
 }
 .card-back { background-color: var(--dark-color); color: var(--light-color); transform: rotateY(180deg); padding: 30px; font-size: 0.95rem; }
 .card-back h3 { margin-top: 0; color: var(--secondary-color); }
@@ -263,17 +289,17 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* --- Animaciones --- */
 @keyframes fadeInTitle {
-    to { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulseGlow {
-    0% { text-shadow: 5px 5px 10px rgba(0,0,0,0.6), 0 0 10px var(--secondary-color), 0 0 30px var(--secondary-color); }
-    100% { text-shadow: 5px 5px 10px rgba(0,0,0,0.8), 0 0 5px var(--secondary-color), 0 0 25px var(--secondary-color); }
+    0% { text-shadow: 5px 5px 10px rgba(0,0,0,0.6), 0 0 10px var(--secondary-color), 0 0 30px var(--secondary-color); }
+    100% { text-shadow: 5px 5px 10px rgba(0,0,0,0.8), 0 0 5px var(--secondary-color), 0 0 25px var(--secondary-color); }
 }
 @keyframes arrowFade {
-    0% { transform: translateY(-5px); opacity: 0; }
-    30% { transform: translateY(0); opacity: 1; }
-    70% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(5px); opacity: 0; }
+    0% { transform: translateY(-5px); opacity: 0; }
+    30% { transform: translateY(0); opacity: 1; }
+    70% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(5px); opacity: 0; }
 }
 
 
@@ -281,18 +307,18 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 /* --- Footer (Pie de Página) Simple y Centrado --- */
 /* ---------------------------------------------------------------------- */
 .footer {
-    background-color: var(--dark-color);
-    color: var(--text-color);
-    padding: 20px 20px; 
-    border-top: 2px solid var(--secondary-color);
-    margin-top: 40px;
-    text-align: center; 
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    padding: 20px 20px; 
+    border-top: 2px solid var(--secondary-color);
+    margin-top: 40px;
+    text-align: center; 
 }
 .footer-content p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.7); 
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7); 
 }
 
 
@@ -302,56 +328,65 @@ main { position: relative; z-index: 1; background-color: var(--primary-color); p
 
 /* Ajustes para tabletas y móviles (Máximo 768px de ancho) */
 @media (max-width: 768px) {
-    /* Header: Compacto */
-    .header-buttons {
-        padding: 8px 15px; 
-        gap: 8px;
+    /* Header: Compacto */
+    .header-buttons {
+        padding: 8px 15px; 
+        gap: 8px;
+    }
+    
+    /* TÍTULO DEL ENCABEZADO: REDUCIDO PARA MOSTRAR "INSTPECAM 3D" */
+    .header-text h1 {
+        font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
+        letter-spacing: 1px;
+    }
+    
+    .header-btn {
+        width: 38px; 
+        height: 38px;
+    }
+
+    /* Ajuste para el botón de descarga en móviles */
+    .download-btn {
+        /* Asegura que el icono no sea demasiado grande */
+        border-width: 1px;
     }
-    
-    /* TÍTULO DEL ENCABEZADO: REDUCIDO PARA MOSTRAR "INSTPECAM 3D" */
-    .header-text h1 {
-        font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
-        letter-spacing: 1px;
-    }
-    
-    .header-btn {
-        width: 38px; 
-        height: 38px;
+    .download-btn svg {
+        stroke-width: 3;
     }
 
-    /* TÍTULO DE INTRODUCCIÓN: REDUCIDO PARA MOSTRAR TEXTO COMPLETO */
-    .intro-title h1 {
-        font-size: 2.5rem; /* Reducido de 3rem a 2.5rem */
-    }
+    /* TÍTULO DE INTRODUCCIÓN: REDUCIDO PARA MOSTRAR TEXTO COMPLETO */
+    .intro-title h1 {
+        font-size: 2.5rem; /* Reducido de 3rem a 2.5rem */
+    }
 
-    /* Contenedor General */
-    .container {
-        margin: 20px auto; 
-        padding: 0 15px;
-    }
-    .section-title {
-        font-size: 2.2rem; 
-    }
+    /* Contenedor General */
+    .container {
+        margin: 20px auto; 
+        padding: 0 15px;
+    }
+    .section-title {
+        font-size: 2.2rem; 
+    }
 
-    /* Grid de Tarjetas: Una sola columna */
-    .team-grid {
-        grid-template-columns: 1fr; 
-        gap: 20px;
-    }
-    .card {
-        height: 380px; 
-    }
-    .card-front img {
-        width: 120px; 
-        height: 120px;
-        border-width: 4px;
-    }
-    
-    /* Footer en Móviles: Asegurar que es pequeño */
-    .footer {
-        padding: 15px 10px;
-    }
-    .footer-content p {
-        font-size: 0.8rem;
-    }
+    /* Grid de Tarjetas: Una sola columna */
+    .team-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    .card {
+        height: 380px; 
+    }
+    .card-front img {
+        width: 120px; 
+        height: 120px;
+        border-width: 4px;
+    }
+    
+    /* Footer en Móviles: Asegurar que es pequeño */
+    .footer {
+        padding: 15px 10px;
+    }
+    .footer-content p {
+        font-size: 0.8rem;
+    }
 }
